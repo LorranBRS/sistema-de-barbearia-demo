@@ -1,0 +1,26 @@
+{{- /* Manifesto do app instalável. O Caddy preenche por barbearia:
+       /manifest.webmanifest?inicio=/barbearia-do-ze&nome=Barbearia%20do%20Zé&curto=Zé */ -}}
+{{- $i := .Req.URL.Query.Get "inicio" -}}
+{{- if not (regexMatch "^/[a-z0-9-]{1,40}$" $i) }}{{ $i = "/" }}{{ end -}}
+{{- $n := .Req.URL.Query.Get "nome" | trim -}}
+{{- if or (eq $n "") (gt (len $n) 60) }}{{ $n = "Barbearo" }}{{ end -}}
+{{- $c := .Req.URL.Query.Get "curto" | trim -}}
+{{- if or (eq $c "") (gt (len $c) 40) }}{{ $c = $n }}{{ end -}}
+{
+  "id": {{ toJson $i }},
+  "name": {{ toJson $n }},
+  "short_name": {{ toJson $c }},
+  "description": "Agenda e agendamento online para barbearias",
+  "lang": "pt-BR",
+  "start_url": {{ toJson $i }},
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1c1917",
+  "theme_color": "#1c1917",
+  "icons": [
+    { "src": "/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

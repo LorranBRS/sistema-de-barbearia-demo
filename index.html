@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // A cópia antiga no GitHub Pages leva para o site oficial (links com "#/" viram caminhos)
+      if (location.hostname.endsWith("github.io")) {
+        var c = location.hash.indexOf("#/") === 0 ? location.hash.slice(1) : "/";
+        if (c.indexOf("/b/") === 0) c = "/" + c.slice(3);
+        location.replace("https://barbearo.com.br" + c);
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbearo · Agenda e agendamento online para barbearias</title>
+    <meta name="description" content="Agenda da recepção, site com agendamento online, lembrete no WhatsApp e comissão da equipe num sistema só, feito para barbearias." />
+    <meta name="theme-color" content="#1c1917" />
+    <link rel="canonical" href="https://barbearo.com.br/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Barbearo" />
+    <meta property="og:url" content="https://barbearo.com.br/" />
+    <meta property="og:title" content="Barbearo · A agenda da sua barbearia, na régua" />
+    <meta property="og:description" content="O cliente marca pelo celular e o horário aparece na agenda na hora. Lembrete no WhatsApp e comissão da equipe incluídos." />
+    <meta property="og:locale" content="pt_BR" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Barbearo" />
+    <script>
+      // Manifesto do app já certo para esta página (o app refina depois com o nome da barbearia)
+      (function () {
+        var c = location.pathname.split("/")[1] || "";
+        var inicio = c === "entrar" || c === "nova-senha" ? "/inicio" : /^[a-z0-9-]{1,40}$/.test(c) && c !== "c" && c !== "confirmar" ? "/" + c : "/";
+        var nome = "Barbearo";
+        try { nome = localStorage.getItem("barbearo.app.nome:" + inicio) || nome; } catch (e) {}
+        var l = document.querySelector('link[rel="manifest"]');
+        if (l) l.href = "/manifest.webmanifest?inicio=" + encodeURIComponent(inicio) + "&nome=" + encodeURIComponent(nome);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-Bc_2oOMu.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/supabase-CkkCwDg3.js">
+    <link rel="modulepreload" crossorigin href="/assets/label-D3bM0W03.js">
+    <link rel="modulepreload" crossorigin href="/assets/nuvem-BEDPbh8O.js">
+    <link rel="modulepreload" crossorigin href="/assets/AtivarAvisos-C--pRWTY.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-gkDsplj1.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
